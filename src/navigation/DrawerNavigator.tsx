@@ -1,10 +1,10 @@
 import React from 'react';
-import {createDrawerNavigator} from '@react-navigation/drawer';
 import {Routes} from './routes';
-import CardsNavigator from './CardsNavigator';
+import CardsNavigator from '@navigation/CardsNavigator';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
 type TDraweParamsList = {
-  [Routes.CARDS_HOME]: undefined;
+  [Routes.CARDS]: undefined;
 };
 
 const Drawer = createDrawerNavigator<TDraweParamsList>();
@@ -12,7 +12,7 @@ const Drawer = createDrawerNavigator<TDraweParamsList>();
 const DrawerNavigator = () => {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name={Routes.CARDS_HOME} component={CardsNavigator} />
+      <Drawer.Screen name={Routes.CARDS} component={CardsNavigator} />
     </Drawer.Navigator>
   );
 };
