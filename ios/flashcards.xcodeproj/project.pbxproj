@@ -14,6 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-flashcards-flashcardsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-flashcards-flashcardsTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		C5380EEA2A40435100DCA8D3 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5380EE92A40435100DCA8D3 /* MaterialIcons.ttf */; };
 		C542488E2A403A3700EED4EC /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C54248842A403A3700EED4EC /* Poppins-ExtraBold.ttf */; };
 		C542488F2A403A3700EED4EC /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C54248852A403A3700EED4EC /* Poppins-Black.ttf */; };
 		C54248902A403A3700EED4EC /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C54248862A403A3700EED4EC /* Poppins-Medium.ttf */; };
@@ -53,6 +54,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-flashcards.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-flashcards.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = flashcards/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-flashcards-flashcardsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flashcards-flashcardsTests.release.xcconfig"; path = "Target Support Files/Pods-flashcards-flashcardsTests/Pods-flashcards-flashcardsTests.release.xcconfig"; sourceTree = "<group>"; };
+		C5380EE92A40435100DCA8D3 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		C54248842A403A3700EED4EC /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-ExtraBold.ttf"; path = "../../src/assets/fonts/Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
 		C54248852A403A3700EED4EC /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Black.ttf"; path = "../../src/assets/fonts/Poppins-Black.ttf"; sourceTree = "<group>"; };
 		C54248862A403A3700EED4EC /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				C542488D2A403A3700EED4EC /* Poppins-Light.ttf */,
 				C54248862A403A3700EED4EC /* Poppins-Medium.ttf */,
 				C542488A2A403A3700EED4EC /* Poppins-Regular.ttf */,
+				C5380EE92A40435100DCA8D3 /* MaterialIcons.ttf */,
 				C54248872A403A3700EED4EC /* Poppins-SemiBold.ttf */,
 				C54248882A403A3700EED4EC /* Poppins-Thin.ttf */,
 			);
@@ -284,6 +287,7 @@
 				C54248922A403A3700EED4EC /* Poppins-Thin.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				C54248942A403A3700EED4EC /* Poppins-Regular.ttf in Resources */,
+				C5380EEA2A40435100DCA8D3 /* MaterialIcons.ttf in Resources */,
 				C542488E2A403A3700EED4EC /* Poppins-ExtraBold.ttf in Resources */,
 				C54248932A403A3700EED4EC /* Poppins-ExtraLight.ttf in Resources */,
 				C54248912A403A3700EED4EC /* Poppins-SemiBold.ttf in Resources */,
