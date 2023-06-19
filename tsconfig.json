@@ -6,6 +6,7 @@
       "@components/*": ["src/components/*"],
       "@navigation/*": ["src/navigation/*"],
       "@screens/*": ["src/screens/*"],
+      "@assets/*": ["src/assets/*"],
       "@theme/*": ["src/theme/*"],
       "@hooks/*": ["src/hooks/*"]
     }
