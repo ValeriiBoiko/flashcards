@@ -7,7 +7,7 @@ const getDrawerButtonStyles = ({colors}: TCreateStylesParams) =>
     menuLine: {
       height: scaleHeight(2, 0.5),
       width: scaleWidth(20),
-      backgroundColor: colors.secondary,
+      backgroundColor: colors.border,
     },
     menuMiddleLine: {
       width: scaleWidth(15),
