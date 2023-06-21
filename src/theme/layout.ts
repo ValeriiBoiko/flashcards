@@ -24,11 +24,11 @@ export const scalePixel = (
   return scaledValue;
 };
 
-export const scaleHeight = (value: number, coefficient = 0.5) => {
+export const scaleHeight = (value = 0, coefficient = 0.5) => {
   return scalePixel(value, heightRelation, coefficient);
 };
 
-export const scaleWidth = (value: number, coefficient = 0.5) => {
+export const scaleWidth = (value = 0, coefficient = 0.5) => {
   return scalePixel(value, widthRelation, coefficient);
 };
 
