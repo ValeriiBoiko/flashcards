@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import useStyles from '@hooks/useStyles';
-import {TouchableOpacity, View, ViewStyle} from 'react-native';
+import {StyleProp, TouchableOpacity, View, ViewStyle} from 'react-native';
 import getDrawerButtonStyles from './DrawerButtonStyles';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 import {scaleWidth} from '@theme/layout';
 
 type TDrawerButtonProps = {
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
 };
 
 const DrawerButton: FC<TDrawerButtonProps> = ({style}) => {
