@@ -13,7 +13,7 @@ export const colors = {
     background: '#F2F2F2',
     text: '#464445',
     border: '#787878',
-    secondary: '#BFBFBF',
+    secondary: '#C7C7C7',
     brand: '#FF643F',
   },
   dark: {
