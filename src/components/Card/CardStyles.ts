@@ -8,7 +8,7 @@ const getCardStyles = ({colors}: TCreateStylesParams) =>
       alignItems: 'center',
       padding: scaleWidth(15),
       backgroundColor: colors.card,
-      borderRadius: scaleWidth(20, 0.5),
+      borderRadius: scaleWidth(12, 0.5),
     },
   });
 

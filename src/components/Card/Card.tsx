@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {TouchableOpacity, ViewStyle} from 'react-native';
+import {StyleProp, TouchableOpacity, ViewStyle} from 'react-native';
 import useStyles from '@hooks/useStyles';
 import getCardStyles from './CardStyles';
 import ShadowBox from '@components/ShadowBox/ShadowBox';
@@ -9,7 +9,7 @@ type TCardProps = {
   shadowOpacity?: number;
   shadowColor?: string;
   children: React.ReactNode | React.ReactNode[];
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
   onPress?: () => void;
 };
 
@@ -26,7 +26,7 @@ const Card: FC<TCardProps> = ({
   return (
     <TouchableOpacity
       disabled={!onPress}
-      activeOpacity={0.8}
+      activeOpacity={1}
       style={style}
       onPress={onPress}>
       <ShadowBox
