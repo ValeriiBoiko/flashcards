@@ -49,6 +49,8 @@ const BottomSheet: React.ForwardRefRenderFunction<
       handleHeight={animatedHandleHeight}
       contentHeight={animatedContentHeight}
       backgroundStyle={styles.background}
+      keyboardBlurBehavior={'restore'}
+      keyboardBehavior={'interactive'}
       style={style}>
       <View style={contentContainerStyle} onLayout={handleContentLayout}>
         {children}

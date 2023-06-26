@@ -2,7 +2,6 @@ import useStyles from '@hooks/useStyles';
 import React, {FC, useMemo} from 'react';
 import {StyleSheet, View, ViewProps, ViewStyle} from 'react-native';
 import {Shadow} from 'react-native-shadow-2';
-import {mergeStyles} from 'src/utils/utils';
 import getShadowBoxStyles from './ShadowBoxStyles';
 
 type TShadowBox = ViewProps & {
@@ -26,7 +25,7 @@ const ShadowBox: FC<TShadowBox> = ({
   ...props
 }) => {
   const styleProps = useMemo<{style: ViewStyle}>(() => {
-    return {style: mergeStyles<ViewStyle>(style)};
+    return {style: StyleSheet.flatten<ViewStyle>(style)};
   }, [style]);
 
   const styles = useStyles(getShadowBoxStyles, styleProps);

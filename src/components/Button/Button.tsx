@@ -11,7 +11,7 @@ export type TButtonProps = {
   size?: 'sm' | 'md' | 'lg';
   style?: ViewStyle;
   disabled?: boolean;
-  leftIcon?: string | React.ReactNode;
+  rightIcon?: string | React.ReactNode;
   onPress?: () => void;
 };
 
@@ -21,7 +21,7 @@ const Button: FC<TButtonProps> = ({
   disabled = false,
   type = 'primary',
   variant = 'solid',
-  leftIcon,
+  rightIcon,
   style,
   onPress,
 }) => {
@@ -41,6 +41,7 @@ const Button: FC<TButtonProps> = ({
 
   return (
     <TouchableOpacity
+      activeOpacity={0.8}
       style={[
         styles.container,
         styles[`${size}Container`],
@@ -51,10 +52,10 @@ const Button: FC<TButtonProps> = ({
       <Text style={[styles.title, disabled && styles.titleDisabled]}>
         {title}
       </Text>
-      {leftIcon && typeof leftIcon === 'string' ? (
-        <Icon name={leftIcon} style={styles.icon} />
+      {rightIcon && typeof rightIcon === 'string' ? (
+        <Icon name={rightIcon} style={styles.icon} />
       ) : (
-        leftIcon
+        rightIcon
       )}
     </TouchableOpacity>
   );
