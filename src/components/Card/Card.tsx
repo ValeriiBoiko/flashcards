@@ -19,24 +19,17 @@ const Card: FC<TCardProps> = ({
   shadowColor = '#000',
   children,
   style,
-  onPress,
 }) => {
   const styles = useStyles(getCardStyles);
 
   return (
-    <TouchableOpacity
-      disabled={!onPress}
-      activeOpacity={1}
-      style={style}
-      onPress={onPress}>
-      <ShadowBox
-        style={styles.card}
-        shadowColor={shadowColor}
-        shadowOpacity={shadowOpacity}
-        shadowRadius={shadowRadius}>
-        {children}
-      </ShadowBox>
-    </TouchableOpacity>
+    <ShadowBox
+      style={[styles.card, style]}
+      shadowColor={shadowColor}
+      shadowOpacity={shadowOpacity}
+      shadowRadius={shadowRadius}>
+      {children}
+    </ShadowBox>
   );
 };
 

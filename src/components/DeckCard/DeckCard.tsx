@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Text, ViewStyle} from 'react-native';
+import {Text, TouchableOpacity, View, ViewStyle} from 'react-native';
 import useStyles from '@hooks/useStyles';
 import Card from '@components/Card';
 import ProgressBar from '@components/ProgressBar';
@@ -26,13 +26,23 @@ const DeckCard: FC<TDeckCardProps> = ({
   const styles = useStyles(getDeckCardStyles);
 
   return (
-    <Card style={style} onPress={onPress}>
-      <Icon style={styles.icon} name={iconName || 'menu-book'} />
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.subtitle}>{numberOfCards} cards</Text>
+    <TouchableOpacity activeOpacity={0.8} style={style} onPress={onPress}>
+      <Card>
+        <Icon style={styles.icon} name={iconName || 'menu-book'} />
 
-      <ProgressBar value={(completedCards / numberOfCards) * 100} height={10} />
-    </Card>
+        <View style={styles.titleWrapper}>
+          <Text numberOfLines={2} style={styles.title}>
+            {title}
+          </Text>
+        </View>
+        <Text style={styles.subtitle}>{numberOfCards} cards</Text>
+
+        <ProgressBar
+          value={(completedCards / numberOfCards) * 100}
+          height={10}
+        />
+      </Card>
+    </TouchableOpacity>
   );
 };
 

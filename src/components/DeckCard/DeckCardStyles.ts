@@ -9,11 +9,16 @@ const getDeckCardStyles = ({colors}: TCreateStylesParams) =>
       color: colors.brand,
       marginTop: scaleHeight(5, 0.5),
       fontSize: scaleFontSize(36, 0.5),
-      marginBottom: scaleHeight(15, 0.5),
+      marginBottom: scaleHeight(4, 0.5),
+    },
+    titleWrapper: {
+      justifyContent: 'center',
+      height: Typography.subtitle1.lineHeight * 2,
     },
     title: {
       ...Typography.subtitle1,
       color: colors.text,
+      textAlign: 'center',
     },
     subtitle: {
       ...Typography.caption,
