@@ -1,4 +1,4 @@
-import {FlatList, ListRenderItemInfo, ScrollView} from 'react-native';
+import {FlatList, ListRenderItemInfo, View} from 'react-native';
 import React, {FC, useCallback, useLayoutEffect, useRef} from 'react';
 import useStyles from '@hooks/useStyles';
 import DrawerButton from '@components/DrawerButton/DrawerButton';
@@ -11,32 +11,33 @@ import {BottomSheetModal} from '@gorhom/bottom-sheet';
 import AddDeckBottomSheet from '@components/AddDeckBottomSheet/AddDeckBottomSheet';
 import {Routes} from '@navigation/routes';
 import {categoriesIconMap} from 'src/const/categories';
+import EmptyScreenPlaceholder from '@components/EmptyScreenPlaceholder';
 
 type TDeck = {
   category: string;
   name: string;
-  decksNumber: number;
-  decksCompleted: number;
+  cardsTotal: number;
+  cardsCompleted: number;
 };
 
 const decks: TDeck[] = [
   {
-    category: 'language',
-    name: 'Food',
-    decksNumber: 16,
-    decksCompleted: 7,
+    category: 'language_learning',
+    name: 'English',
+    cardsTotal: 16,
+    cardsCompleted: 7,
   },
   {
-    category: 'language',
-    name: 'Food',
-    decksNumber: 16,
-    decksCompleted: 7,
+    category: 'miscellaneous',
+    name: 'Mescellaneous',
+    cardsTotal: 16,
+    cardsCompleted: 7,
   },
   {
-    category: 'language',
-    name: 'Food',
-    decksNumber: 16,
-    decksCompleted: 7,
+    category: 'test_preparation',
+    name: 'Test Preparation',
+    cardsTotal: 16,
+    cardsCompleted: 7,
   },
 ];
 
@@ -71,27 +72,34 @@ const Home: FC<THomeProps> = ({navigation}) => {
     ({item}: ListRenderItemInfo<TDeck>) => (
       <DeckCard
         iconName={categoriesIconMap[item.category]}
-        title={'Food'}
-        completedCards={3}
-        numberOfCards={16}
+        title={item.name}
+        completedCards={item.cardsCompleted}
+        numberOfCards={item.cardsTotal}
         style={styles.deck}
       />
     ),
     [categoriesIconMap, styles],
   );
 
+  const listEmptyComponent = useCallback(
+    () => <EmptyScreenPlaceholder title="There is no any deck" />,
+    [],
+  );
+
   return (
-    <>
+    <View style={{flex: 1}}>
       <FlatList
         data={decks}
         numColumns={2}
         style={styles.decks}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.decksContentContainer}
         renderItem={renderDeck}
+        ListEmptyComponent={listEmptyComponent}
       />
 
       <AddDeckBottomSheet ref={BottomSheetRef} />
-    </>
+    </View>
   );
 };
 

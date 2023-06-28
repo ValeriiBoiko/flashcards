@@ -3,11 +3,11 @@ import {scaleFontSize, scaleHeight, scaleWidth} from '@theme/layout';
 import {Typography} from '@theme/typography';
 import {StyleSheet} from 'react-native';
 
-const getAddDeckBottomSheetStyles = ({colors}: TCreateStylesParams) =>
+const getAddDeckBottomSheetStyles = ({colors, insets}: TCreateStylesParams) =>
   StyleSheet.create({
     bottomSheet: {
       flexDirection: 'column-reverse',
-      paddingBottom: scaleHeight(20),
+      paddingBottom: insets.bottom ? insets.bottom : scaleHeight(20),
     },
 
     categoryContainer: {

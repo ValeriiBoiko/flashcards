@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import {scaleHeight, scaleWidth} from '@theme/layout';
 import {TCreateStylesParams} from '@hooks/useStyles';
 
-const getHomeStyles = (data: TCreateStylesParams) =>
+const getHomeStyles = ({insets}: TCreateStylesParams) =>
   StyleSheet.create({
     menu: {
       height: '100%',
@@ -13,8 +13,13 @@ const getHomeStyles = (data: TCreateStylesParams) =>
       marginRight: scaleWidth(20),
     },
     decks: {
+      flex: 1,
       marginTop: scaleHeight(30, 0.5),
       paddingHorizontal: scaleWidth(10),
+    },
+    decksContentContainer: {
+      flexGrow: 1,
+      paddingBottom: insets.bottom,
     },
     deck: {
       width: '50%',

@@ -28,7 +28,7 @@ const DeckCard: FC<TDeckCardProps> = ({
   return (
     <TouchableOpacity activeOpacity={0.8} style={style} onPress={onPress}>
       <Card>
-        <Icon style={styles.icon} name={iconName || 'menu-book'} />
+        <Icon style={styles.icon} name={iconName || 'topic'} />
 
         <View style={styles.titleWrapper}>
           <Text numberOfLines={2} style={styles.title}>
