@@ -11,7 +11,7 @@ type TShadowBox = ViewProps & {
   yOffset?: number;
   shadowRadius?: number;
   shadowOpacity?: number;
-  style: ViewStyle;
+  style?: ViewStyle;
 };
 
 const ShadowBox: FC<TShadowBox> = ({

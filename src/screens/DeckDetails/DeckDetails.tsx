@@ -1,5 +1,4 @@
 import ScreenTitle from '@components/ScreenTitle/ScreenTitle';
-import useColors from '@hooks/useColors';
 import {TCardsNavigatorParamList} from '@navigation/CardsNavigator';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -15,6 +14,7 @@ import AnimatedMountView from '@components/AnimatedMountView/AnimatedMountView';
 import StudyCardsList from '@components/StudyCardsList/StudyCardsList';
 import useStyles from '@hooks/useStyles';
 import getDeckDetailsStyles from './DeckDetailsStyles';
+import useColors from '@hooks/useColors';
 
 const deck = {
   id: '1',
@@ -25,7 +25,32 @@ const deck = {
   cardsCompleted: 7,
 };
 
+const cards = [
+  {
+    id: '1',
+    title: 'Title',
+    description: 'Description',
+    progress: 0,
+    imageUrl: 'https://podcastaddict.com/cache/artwork/thumb/3530816',
+  },
+  {
+    id: '2',
+    title: 'Title 1',
+    description: 'Description 1',
+    progress: 50,
+    imageUrl: 'https://podcastaddict.com/cache/artwork/thumb/3530816',
+  },
+  {
+    id: '3',
+    title: 'Title 2',
+    description: 'Description 2',
+    progress: 80,
+    imageUrl: 'https://podcastaddict.com/cache/artwork/thumb/3530816',
+  },
+];
+
 const DeckDetails = () => {
+  const colors = useColors();
   const styles = useStyles(getDeckDetailsStyles);
   const navigation =
     useNavigation<StackNavigationProp<TCardsNavigatorParamList>>();
@@ -61,11 +86,19 @@ const DeckDetails = () => {
 
         <ShadowBox
           style={{marginTop: 20}}
-          shadowColor={'#000'}
+          shadowColor={colors.shadow}
           shadowOpacity={0.02}
           shadowRadius={10}>
           <TextInput placeholder="Search card" />
         </ShadowBox>
+      </AnimatedMountView>
+
+      <AnimatedMountView
+        runAfterInterraction
+        duration={400}
+        delay={400}
+        style={{marginTop: 20}}>
+        <StudyCardsList data={cards} />
       </AnimatedMountView>
     </View>
   );
