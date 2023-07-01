@@ -112,7 +112,7 @@ const getButtonStyles = ({
 
     icon: {
       ...buttonStyles[props.variant].title,
-      paddingLeft: scaleWidth(8),
+      paddingLeft: props.title ? scaleWidth(8) : 0,
       fontSize: scaleFontSize(20),
     },
   });

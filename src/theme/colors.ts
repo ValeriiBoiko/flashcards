@@ -5,6 +5,7 @@ export type TColors = {
   border: string;
   secondary: string;
   brand: string;
+  success: string;
 };
 
 export const colors = {
@@ -14,7 +15,8 @@ export const colors = {
     text: '#464445',
     border: '#787878',
     secondary: '#C7C7C7',
-    brand: '#FF643F',
+    brand: '#ED7043',
+    success: '#80BE78',
   },
   dark: {
     card: '#313131',
@@ -22,6 +24,7 @@ export const colors = {
     text: '#E0E0E0',
     border: '#B7B7B7',
     secondary: '#BFBFBF',
-    brand: '#FF643F',
+    brand: '#ED7043',
+    success: '#80BE78',
   },
 };
