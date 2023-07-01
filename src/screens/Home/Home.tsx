@@ -14,6 +14,7 @@ import {categoriesIconMap} from 'src/const/categories';
 import EmptyScreenPlaceholder from '@components/EmptyScreenPlaceholder';
 
 type TDeck = {
+  id: string;
   category: string;
   name: string;
   cardsTotal: number;
@@ -22,18 +23,21 @@ type TDeck = {
 
 const decks: TDeck[] = [
   {
+    id: '1',
     category: 'language_learning',
     name: 'English',
     cardsTotal: 16,
     cardsCompleted: 7,
   },
   {
+    id: '2',
     category: 'miscellaneous',
     name: 'Mescellaneous',
     cardsTotal: 16,
     cardsCompleted: 7,
   },
   {
+    id: '3',
     category: 'test_preparation',
     name: 'Test Preparation',
     cardsTotal: 16,
@@ -68,14 +72,25 @@ const Home: FC<THomeProps> = ({navigation}) => {
     BottomSheetRef.current?.present();
   }, []);
 
+  const onPressDeckCard = useCallback(
+    (id: string) => {
+      //
+    },
+    [navigation],
+  );
+
   const renderDeck = useCallback(
-    ({item}: ListRenderItemInfo<TDeck>) => (
+    ({item, index}: ListRenderItemInfo<TDeck>) => (
       <DeckCard
+        key={item.id}
+        id={item.id}
+        animationDelay={200 * index}
         iconName={categoriesIconMap[item.category]}
         title={item.name}
         completedCards={item.cardsCompleted}
         numberOfCards={item.cardsTotal}
         style={styles.deck}
+        onPress={onPressDeckCard}
       />
     ),
     [categoriesIconMap, styles],

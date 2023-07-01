@@ -6,7 +6,7 @@ import {StyleSheet} from 'react-native';
 const getNavBackButtonStyles = ({colors}: TCreateStylesParams) =>
   StyleSheet.create({
     label: {
-      ...Typography.caption,
+      ...Typography.body2,
       color: colors.brand,
       paddingLeft: scaleWidth(20),
     },

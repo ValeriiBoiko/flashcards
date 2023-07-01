@@ -10,7 +10,7 @@ const getShadowBoxStyles = ({
     shadowBox: {
       height: '100%',
       width: '100%',
-      borderRadius: props.style.borderRadius,
+      borderRadius: props?.style?.borderRadius,
     },
   });
 

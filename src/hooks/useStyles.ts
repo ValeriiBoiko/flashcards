@@ -19,7 +19,7 @@ export type TCreateStylesParams<T = {[key: string]: any}> = {
 
 export type TCreateStyles<T, P = {[key: string]: any}> = (
   data: TCreateStylesParams<P>,
-) => StyleSheet.NamedStyles<T>;
+) => T;
 
 const useStyles = <T extends unknown, P = {[key: string]: any}>(
   getStyles: TCreateStyles<T, P>,
