@@ -14,7 +14,7 @@ const getHomeStyles = ({insets}: TCreateStylesParams) =>
     },
     decks: {
       flex: 1,
-      marginTop: scaleHeight(30, 0.5),
+      marginTop: scaleHeight(20, 0.5),
       paddingHorizontal: scaleWidth(10),
     },
     decksContentContainer: {

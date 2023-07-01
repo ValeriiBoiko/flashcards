@@ -74,7 +74,9 @@ const Home: FC<THomeProps> = ({navigation}) => {
 
   const onPressDeckCard = useCallback(
     (id: string) => {
-      //
+      navigation.navigate(Routes.CARDS_DECK_DETAILS, {
+        deckId: id,
+      });
     },
     [navigation],
   );

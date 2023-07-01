@@ -1,4 +1,5 @@
 export enum Routes {
   CARDS = 'CARDS',
   CARDS_HOME = 'CARDS_HOME',
+  CARDS_DECK_DETAILS = 'CARDS_DECK_DETAILS',
 }

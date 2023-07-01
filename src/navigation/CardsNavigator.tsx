@@ -7,15 +7,21 @@ import {
   createStackNavigator,
 } from '@react-navigation/stack';
 import {scaleHeight} from '@theme/layout';
+import DeckDetails from '@screens/DeckDetails/DeckDetails';
 import NavBackButton from '@components/NavBackButton/NavBackButton';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 export type TCardsNavigatorParamList = {
   [Routes.CARDS_HOME]: undefined;
+  [Routes.CARDS_DECK_DETAILS]: {
+    deckId: string;
+  };
 };
 
 const Stack = createStackNavigator<TCardsNavigatorParamList>();
 
 const CardsNavigator = () => {
+  const insets = useSafeAreaInsets();
   const colors = useColors();
 
   const screenOptions: StackNavigationOptions = {
@@ -24,7 +30,7 @@ const CardsNavigator = () => {
     headerShadowVisible: false,
     headerLeft: NavBackButton,
     headerStyle: {
-      height: scaleHeight(70),
+      height: scaleHeight(60, 0.5) + insets.top,
       backgroundColor: colors.background,
     },
   };
@@ -32,6 +38,7 @@ const CardsNavigator = () => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen name={Routes.CARDS_HOME} component={Home} />
+      <Stack.Screen name={Routes.CARDS_DECK_DETAILS} component={DeckDetails} />
     </Stack.Navigator>
   );
 };
