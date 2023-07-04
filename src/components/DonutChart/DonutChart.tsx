@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useMemo} from 'react';
-import {InteractionManager} from 'react-native';
+import {InteractionManager, StyleProp, ViewStyle} from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedProps,
@@ -19,6 +19,7 @@ type TDonutChartProps = {
   size: number;
   trackColor?: string;
   animated?: boolean;
+  style?: StyleProp<ViewStyle>;
 };
 
 const DonutChart: FC<TDonutChartProps> = ({
@@ -27,6 +28,7 @@ const DonutChart: FC<TDonutChartProps> = ({
   size,
   animated = true,
   trackColor,
+  style,
 }) => {
   const sharedValue = useSharedValue(animated ? 0 : 1);
 
@@ -80,7 +82,11 @@ const DonutChart: FC<TDonutChartProps> = ({
   }, [circleLength]);
 
   return (
-    <Svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+    <Svg
+      width={size}
+      height={size}
+      style={style}
+      viewBox={`0 0 ${size} ${size}`}>
       <Defs>
         <Mask x={0} y={0} width={size} height={size} id="mask">
           <AnimatedCircle

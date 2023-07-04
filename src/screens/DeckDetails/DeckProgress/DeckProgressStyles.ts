@@ -1,5 +1,5 @@
 import {TCreateStylesParams} from '@hooks/useStyles';
-import {scaleFontSize} from '@theme/layout';
+import {scaleFontSize, scaleHeight} from '@theme/layout';
 import {Font, Typography} from '@theme/typography';
 import {StyleSheet} from 'react-native';
 
@@ -9,14 +9,12 @@ const getDeckProgressStyles = ({colors}: TCreateStylesParams) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      paddingTop: 30,
-      paddingBottom: 50,
     },
     cardsNumberValue: {
       ...Typography.headline4,
       fontFamily: Font.POPPINS_SEMIBOLD,
       color: colors.text,
-      marginBottom: -10,
+      marginBottom: scaleHeight(-10, 0.5),
       textAlign: 'center',
     },
     cardsNumberLabel: {
@@ -43,11 +41,12 @@ const getDeckProgressStyles = ({colors}: TCreateStylesParams) =>
       color: colors.border,
     },
 
+    chartWrapper: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     deckIcon: {
       position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: [{translateX: -18}, {translateY: -18}],
       color: colors.brand,
       fontSize: scaleFontSize(36),
     },

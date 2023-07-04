@@ -1,8 +1,9 @@
 import React, {FC, useCallback} from 'react';
 import StudyCardItem from './StudyCardItem';
-import {FlatList, ListRenderItemInfo, StyleProp, ViewStyle} from 'react-native';
+import {FlatListProps, ListRenderItemInfo} from 'react-native';
 import useStyles from '@hooks/useStyles';
 import getStudyCardsListStyles from './StudyCardsListStyles';
+import Animated from 'react-native-reanimated';
 
 type TCard = {
   id: string;
@@ -12,13 +13,15 @@ type TCard = {
   imageUrl?: string;
 };
 
-type TStudyCardsList = {
-  data: TCard[];
-  style?: StyleProp<ViewStyle>;
+type TStudyCardsList = Omit<FlatListProps<TCard>, 'renderItem'> & {
   onPressItem?: (id: string) => void;
 };
 
-const StudyCardsList: FC<TStudyCardsList> = ({data, style, onPressItem}) => {
+const StudyCardsList: FC<TStudyCardsList> = ({
+  contentContainerStyle,
+  onPressItem,
+  ...props
+}) => {
   const styles = useStyles(getStudyCardsListStyles);
 
   const renderItem = useCallback(
@@ -37,11 +40,12 @@ const StudyCardsList: FC<TStudyCardsList> = ({data, style, onPressItem}) => {
   );
 
   return (
-    <FlatList
-      data={data}
-      style={style}
-      contentContainerStyle={styles.contentContainer}
+    <Animated.FlatList
+      bounces={false}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
       renderItem={renderItem}
+      {...props}
     />
   );
 };

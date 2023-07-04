@@ -40,7 +40,10 @@ const StudyCardItem: FC<TStudyCardItem> = ({
   };
 
   return (
-    <TouchableOpacity style={style} onPress={() => onPress?.(id)}>
+    <TouchableOpacity
+      activeOpacity={0.8}
+      style={style}
+      onPress={() => onPress?.(id)}>
       <ShadowBox
         shadowOpacity={0.02}
         shadowRadius={10}
