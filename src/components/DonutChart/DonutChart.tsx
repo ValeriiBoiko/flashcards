@@ -1,6 +1,7 @@
 import React, {FC, useEffect, useMemo} from 'react';
 import {InteractionManager, StyleProp, ViewStyle} from 'react-native';
 import Animated, {
+  WithTimingConfig,
   interpolate,
   useAnimatedProps,
   useSharedValue,
@@ -19,6 +20,7 @@ type TDonutChartProps = {
   size: number;
   trackColor?: string;
   animated?: boolean;
+  animationConfig?: WithTimingConfig;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -29,6 +31,7 @@ const DonutChart: FC<TDonutChartProps> = ({
   animated = true,
   trackColor,
   style,
+  animationConfig,
 }) => {
   const sharedValue = useSharedValue(animated ? 0 : 1);
 
@@ -44,6 +47,7 @@ const DonutChart: FC<TDonutChartProps> = ({
     InteractionManager.runAfterInteractions(() => {
       sharedValue.value = withTiming(1, {
         duration: 400,
+        ...animationConfig,
       });
     });
   }, []);

@@ -7,7 +7,7 @@ const getAddDeckBottomSheetStyles = ({colors, insets}: TCreateStylesParams) =>
   StyleSheet.create({
     bottomSheet: {
       flexDirection: 'column-reverse',
-      paddingBottom: insets.bottom ? insets.bottom : scaleHeight(20),
+      paddingBottom: insets.bottom ? insets.bottom : scaleHeight(20, 0.5),
     },
 
     categoryContainer: {

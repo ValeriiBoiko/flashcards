@@ -52,7 +52,9 @@ const BottomSheet: React.ForwardRefRenderFunction<
       keyboardBlurBehavior={'restore'}
       keyboardBehavior={'interactive'}
       style={style}>
-      <View style={contentContainerStyle} onLayout={handleContentLayout}>
+      <View
+        style={[styles.contentContainer, contentContainerStyle]}
+        onLayout={handleContentLayout}>
         {children}
       </View>
     </BottomSheetModal>

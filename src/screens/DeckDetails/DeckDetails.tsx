@@ -3,7 +3,7 @@ import {TCardsNavigatorParamList} from '@navigation/CardsNavigator';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {scaleHeight, scaleWidth} from '@theme/layout';
-import React, {useLayoutEffect} from 'react';
+import React, {useCallback, useLayoutEffect, useRef} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import DeckProgress from './DeckProgress';
@@ -19,6 +19,8 @@ import Animated, {
   useAnimatedScrollHandler,
   useSharedValue,
 } from 'react-native-reanimated';
+import AddCardBottomSheet from '@components/AddCardBottomSheet/AddCardBottomSheet';
+import {BottomSheetModal} from '@gorhom/bottom-sheet';
 
 const deck = {
   id: '1',
@@ -58,6 +60,8 @@ const DeckDetails = () => {
   const navigation =
     useNavigation<StackNavigationProp<TCardsNavigatorParamList>>();
 
+  const bottomSheetRef = useRef<BottomSheetModal>(null);
+
   const SCALED_PIXEL = scaleHeight(1, 0.5);
   const scrollSharedValue = useSharedValue(0);
 
@@ -77,6 +81,10 @@ const DeckDetails = () => {
       ),
     });
   }, [deck.name]);
+
+  const onOpenCardBottomSheet = useCallback(() => {
+    bottomSheetRef.current?.present();
+  }, [bottomSheetRef.current]);
 
   const onScroll = useAnimatedScrollHandler(({contentOffset}) => {
     scrollSharedValue.value = interpolate(
@@ -134,7 +142,7 @@ const DeckDetails = () => {
         <Animated.View style={buttonsBlockStyle}>
           <View style={styles.buttonsRow}>
             <Button title="Study cards" style={styles.startButton} />
-            <Button rightIcon={'add'} />
+            <Button rightIcon={'add'} onPress={onOpenCardBottomSheet} />
           </View>
         </Animated.View>
       </AnimatedMountView>
@@ -145,6 +153,8 @@ const DeckDetails = () => {
           style={progressBlockStyle}
         />
       </AnimatedMountView>
+
+      <AddCardBottomSheet ref={bottomSheetRef} />
     </View>
   );
 };
