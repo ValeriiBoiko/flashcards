@@ -45,6 +45,9 @@ const getAddDeckBottomSheetStyles = ({colors, insets}: TCreateStylesParams) =>
       width: '100%',
       marginTop: scaleHeight(20, 0.5),
     },
+    audioTrack: {
+      height: scaleHeight(20, 0.5),
+    },
 
     saveButton: {
       flex: 1,

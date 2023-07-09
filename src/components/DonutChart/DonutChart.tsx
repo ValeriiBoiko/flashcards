@@ -1,6 +1,7 @@
 import React, {FC, useEffect, useMemo} from 'react';
 import {InteractionManager, StyleProp, ViewStyle} from 'react-native';
 import Animated, {
+  Extrapolate,
   WithTimingConfig,
   interpolate,
   useAnimatedProps,
@@ -77,7 +78,12 @@ const DonutChart: FC<TDonutChartProps> = ({
   }, [data, circleLength]);
 
   const maskAnimatedProps = useAnimatedProps(() => {
-    const dash = interpolate(sharedValue.value, [0, 1], [0, circleLength]);
+    const dash = interpolate(
+      sharedValue.value,
+      [0, 1],
+      [0, circleLength],
+      Extrapolate.CLAMP,
+    );
     const offset = circleLength - dash;
 
     return {
@@ -98,10 +104,9 @@ const DonutChart: FC<TDonutChartProps> = ({
             cy={center}
             r={radius}
             strokeWidth={thickness}
-            stroke={'white'}
+            stroke={'#fff'}
             origin={[center, center]}
             rotation={-90}
-            strokeDasharray={[0, 2 * Math.PI * 45]}
             animatedProps={maskAnimatedProps}
           />
         </Mask>

@@ -13,32 +13,34 @@ import Animated, {
 import {scaleFontSize, scaleWidth} from '@theme/layout';
 import DonutChart from '@components/DonutChart/DonutChart';
 import useColors from '@hooks/useColors';
+import AudioControlIcon from './AudioControlIcon';
 
 type TAudioRecorderControlsProps = {
   recordingLimit: number;
   extendedView?: boolean;
-  recording: boolean;
+  recording?: boolean;
+  playing?: boolean;
   style?: StyleProp<ViewStyle>;
-  onStop: () => void;
+  onStopRecorder: () => void;
+  onStopPlayer: () => void;
   onRecord: () => void;
   onPlay?: () => void;
   onClear?: () => void;
 };
 
-const AnimatedIcon = Animated.createAnimatedComponent(Icon);
-
 const AudioRecorderControls: FC<TAudioRecorderControlsProps> = ({
   recording,
+  playing,
   extendedView,
   recordingLimit,
   style,
   onPlay,
-  onStop,
+  onStopRecorder,
+  onStopPlayer,
   onRecord,
   onClear,
 }) => {
   const SCALED_PIXEL = scaleFontSize(1);
-  const ICON_SIZE = scaleFontSize(24);
 
   const colors = useColors();
   const styles = useStyles(getAudioRecorderControlsStyles);
@@ -47,37 +49,15 @@ const AudioRecorderControls: FC<TAudioRecorderControlsProps> = ({
 
   useEffect(() => {
     iconSharedValue.value = withTiming(recording ? 1 : 0, {
-      duration: 200,
+      duration: 250,
     });
   }, [recording]);
 
   useEffect(() => {
     extendedViewSharedValue.value = withTiming(extendedView ? 1 : 0, {
-      duration: 200,
+      duration: 250,
     });
   }, [extendedView]);
-
-  const stopAnimatedStyles = useAnimatedStyle(() => {
-    return {
-      opacity: interpolate(iconSharedValue.value, [0, 1], [1, 0]),
-      transform: [
-        {translateX: -ICON_SIZE / 2},
-        {translateY: -ICON_SIZE / 2},
-        {scale: interpolate(iconSharedValue.value, [0, 1], [1, 0])},
-      ],
-    };
-  }, [iconSharedValue, ICON_SIZE]);
-
-  const micAnimatedStyles = useAnimatedStyle(() => {
-    return {
-      opacity: iconSharedValue.value,
-      transform: [
-        {translateX: -ICON_SIZE / 2},
-        {translateY: -ICON_SIZE / 2},
-        {scale: iconSharedValue.value},
-      ],
-    };
-  }, [iconSharedValue, ICON_SIZE]);
 
   const playAnimatedStyles = useAnimatedStyle(() => {
     return {
@@ -119,7 +99,7 @@ const AudioRecorderControls: FC<TAudioRecorderControlsProps> = ({
   ];
 
   const onPressMainButton = () => {
-    recording ? onStop() : onRecord();
+    recording ? onStopRecorder() : onRecord();
   };
 
   return (
@@ -128,8 +108,14 @@ const AudioRecorderControls: FC<TAudioRecorderControlsProps> = ({
         <TouchableOpacity
           activeOpacity={0.9}
           style={styles.secondaryButton}
-          onPress={onPlay}>
-          <Icon name="play-arrow" style={styles.secondaryIcon} />
+          onPress={playing ? onStopPlayer : onPlay}>
+          <AudioControlIcon
+            size={24}
+            color={colors.background}
+            activeIconType={playing ? 'alternative' : 'default'}
+            defaultIcon={'play-arrow'}
+            alternativeIcon="stop"
+          />
         </TouchableOpacity>
       </Animated.View>
 
@@ -137,8 +123,13 @@ const AudioRecorderControls: FC<TAudioRecorderControlsProps> = ({
         activeOpacity={0.9}
         style={styles.mainButton}
         onPress={onPressMainButton}>
-        <AnimatedIcon name={'mic'} style={[styles.icon, stopAnimatedStyles]} />
-        <AnimatedIcon name={'stop'} style={[styles.icon, micAnimatedStyles]} />
+        <AudioControlIcon
+          size={24}
+          color={colors.brand}
+          activeIconType={recording ? 'alternative' : 'default'}
+          defaultIcon={'mic'}
+          alternativeIcon="stop"
+        />
 
         {recording && (
           <DonutChart

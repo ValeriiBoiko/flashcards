@@ -36,16 +36,13 @@ const getAudioRecorderControlsStyles = ({colors}: TCreateStylesParams) =>
     progress: {
       position: 'absolute',
     },
-    icon: {
-      color: colors.brand,
-      fontSize: scaleFontSize(24),
+
+    iconContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    alternativeIcon: {
       position: 'absolute',
-      left: '50%',
-      top: '50%',
-      transform: [
-        {translateX: -scaleFontSize(12)},
-        {translateY: -scaleFontSize(12)},
-      ],
     },
   });
 

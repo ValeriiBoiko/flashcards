@@ -4,12 +4,15 @@ import useColors from '@hooks/useColors';
 import {hexToRgb} from 'src/utils/colors';
 import {Defs, Mask, Path, Rect, Svg} from 'react-native-svg';
 import useLayout from '@hooks/useLayout';
+import Animated, {SharedValue, useAnimatedProps} from 'react-native-reanimated';
 
 type TAudioTrackProps = {
   stepWidth?: number;
-  progress?: number;
+  progress?: number | SharedValue<number>;
   style?: StyleProp<ViewStyle>;
 };
+
+const AnimatedRect = Animated.createAnimatedComponent(Rect);
 
 const AudioTrack: FC<TAudioTrackProps> = ({
   style,
@@ -44,6 +47,14 @@ const AudioTrack: FC<TAudioTrackProps> = ({
     }
   }, [width, height, stepWidth]);
 
+  const animatedProgressProps = useAnimatedProps(() => {
+    const value = typeof progress === 'number' ? progress : progress.value;
+
+    return {
+      width: (width / 100) * value,
+    };
+  }, [progress, width]);
+
   return (
     <Svg
       style={style}
@@ -51,12 +62,12 @@ const AudioTrack: FC<TAudioTrackProps> = ({
       onLayout={onLayout}>
       <Defs>
         <Mask id={'progressMask'}>
-          <Rect
-            fill={'#fff'}
+          <AnimatedRect
             x={0}
             y={0}
+            fill={'#fff'}
             height={height}
-            width={(width / 100) * progress}
+            animatedProps={animatedProgressProps}
           />
         </Mask>
       </Defs>
