@@ -64,6 +64,7 @@
 		C542488B2A403A3700EED4EC /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Bold.ttf"; path = "../../src/assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		C542488C2A403A3700EED4EC /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Italic.ttf"; path = "../../src/assets/fonts/Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		C542488D2A403A3700EED4EC /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Light.ttf"; path = "../../src/assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
+		C5B7DEE92A588632005382BE /* flashcards-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "flashcards-Bridging-Header.h"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -114,6 +115,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				C5B7DEE92A588632005382BE /* flashcards-Bridging-Header.h */,
 			);
 			name = flashcards;
 			sourceTree = "<group>";
@@ -247,7 +249,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -550,6 +552,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = flashcards;
+				SWIFT_OBJC_BRIDGING_HEADER = "flashcards-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -576,6 +579,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = flashcards;
+				SWIFT_OBJC_BRIDGING_HEADER = "flashcards-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
